@@ -11,15 +11,18 @@ package entity;
  */
 public class Papel {
     
-      public void usaPapel(int arma) {
-        switch (arma) {
+    
+      public String usaPapel(int arma) {
+          String str = null;
+        switch (arma) {            
             case 1 ->
-                System.out.println("Ganhou!\nFiquei enrolado!");
+                str = ("Player 1 Ganhou!\n Papel envolve Pedra!");
             case 2 ->
-                System.out.println("Deu empate!! \nDois papeis se encontram no meio do caminho!");
+                str = ("Deu empate!! \nDois papeis se encontram no meio do caminho!");
             case 3 ->
-                System.out.println("Perdeu!! \nVocê ficou em pedaços!");
+                str = ("Player 1 Perdeu!! \nPapel é cortado por Tesoura!");
         }
+        return str;
 
     }
     

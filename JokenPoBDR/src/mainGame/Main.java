@@ -10,6 +10,7 @@ import entity.Pedra;
 import entity.Tesoura; 
 import java.util.Random; // para gerar escolha do computador (numero randomico)
 import java.util.Scanner; // para entrada de dados
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,13 +30,16 @@ public class Main {
             escolha = defineNJogadores();
 
             if (escolha == 1) {
+                System.out.println("PLAYER 1");
                 int armaUser1 = escolheArmaUser();
                 int armaComputer = escolheArmaComputer();
 
                 calculaVencedor(armaUser1, armaComputer);
 
             } else {
+                System.out.println("PLAYER 1");
                 int armaUser1 = escolheArmaUser();
+                System.out.println("PLAYER 2");
                 int armaUser2 = escolheArmaUser();
 
                 calculaVencedor(armaUser1, armaUser2);
@@ -65,8 +69,7 @@ public class Main {
     public static int escolheArmaUser() {
         int armaUser;
         do {
-            System.out.println("Vamos lá!!\n"
-                    + "Escolha sua arma!\n"
+            System.out.println("Escolha sua arma!\n"
                     + "1 - Pedra\n"
                     + "2 - Papel\n"
                     + "3 - Tesoura");
@@ -93,17 +96,17 @@ public class Main {
         switch (arma1) {
             case 1:
                 Pedra pedra = new Pedra();
-                pedra.usaPedra(arma2);
+                JOptionPane.showMessageDialog(null, pedra.usaPedra(arma2));
                 break;
 
             case 2:
                 Papel papel = new Papel();
-                papel.usaPapel(arma2);
+                 JOptionPane.showMessageDialog(null,papel.usaPapel(arma2));
                 break;
 
             case 3:
                 Tesoura tesoura = new Tesoura();
-                tesoura.usaTesoura(arma2);
+                 JOptionPane.showMessageDialog(null,tesoura.usaTesoura(arma2));
                 break;
         }
     }

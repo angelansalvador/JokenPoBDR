@@ -11,15 +11,16 @@ package entity;
  */
 public class Pedra {
 
-    public void usaPedra(int arma) {
-        switch (arma) {
+    public String usaPedra(int arma) {
+          String str = null;
+        switch (arma) {            
             case 1 ->
-                System.out.println("Deu empate!\nE aí sister Pedra! Como vai a vida? Rolando bem?");
+                str = ("Deu empate!\nDuas pedrinhas brincando");
             case 2 ->
-                System.out.println("Perdeu!! \nPapel é leve mas me envolve tão bem!");
+                str = ("Player 1 perdeu! \nPedra é envolvida por papel!");
             case 3 ->
-                System.out.println("Ganhou!! \nHaha... quebrei sua tesoura!");
+                str = ("Player 1 ganhou!! \nPedra quebra tesoura!");
         }
-
-    }
+        return str;
+}
 }
