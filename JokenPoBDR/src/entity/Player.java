@@ -8,16 +8,12 @@ package entity;
 import java.util.Scanner;
 
 /**
- *A Classe Player tem como atributo nome e 
- *como métodos pode escolher armas e iniciar a batalha (onde pode usar pedra, papel ou tesoura)
+ *
+ * @author anxi_
  */
 public class Player {
     
     private String nome;
-    
-    Pedra pedra;
-    Papel papel;
-    Tesoura tesoura;
    
 
     public String getNome() {
@@ -51,17 +47,20 @@ public class Player {
     }
     
     public void vamosBatalhar(int arma1, int arma2) {
-        System.out.println("Agora vamos ao combate!!");         
+                
         switch (arma1) {
             case 1:
+                Pedra pedra = new Pedra();
                 pedra.usaPedra(arma2, nome);
                 break;
 
             case 2:
+                Papel papel = new Papel();
                 papel.usaPapel(arma2, nome);
                 break;
 
             case 3:
+                Tesoura tesoura = new Tesoura();
                 tesoura.usaTesoura(arma2, nome);
                 break;
         }
