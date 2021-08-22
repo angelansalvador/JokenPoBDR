@@ -9,18 +9,17 @@ package entity;
  *
  * @author anxi_
  */
-public class Pedra {
+public class Pedra {   
 
-    public String usaPedra(int arma) {
-          String str = null;
+    public void usaPedra(int arma, String nome) {
         switch (arma) {            
             case 1 ->
-                str = ("Deu empate!\nDuas pedrinhas brincando");
+                System.out.println ("Empatou!\nDuas pedrinhas brincando");
             case 2 ->
-                str = ("Player 1 perdeu! \nPedra é envolvida por papel!");
+               System.out.println(nome.toUpperCase() + " perdeu! \nPedra é envolvida por papel!");
             case 3 ->
-                str = ("Player 1 ganhou!! \nPedra quebra tesoura!");
+                System.out.println(nome.toUpperCase() + " ganhou!! \nPedra quebra tesoura!");
         }
-        return str;
+        
 }
 }

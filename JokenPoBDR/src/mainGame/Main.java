@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mainGame;
 
-import entity.Papel;
-import entity.Pedra;
-import entity.Tesoura; 
-import java.util.Random; // para gerar escolha do computador (numero randomico)
+import entity.Player;
+import funcoes.Funcoes;
 import java.util.Scanner; // para entrada de dados
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author anxi_
- */
+
 public class Main {
+
     static Scanner input = new Scanner(System.in);
-    
+
     public static void main(String[] args) {
+        Funcoes funcoes = new Funcoes();
         int escolha;
         String resposta;
         do {
@@ -27,22 +19,31 @@ public class Main {
             System.out.println("•••••• JokenPo ••••••");
             System.out.println("•••••••••••••••••••••••••");
 
-            escolha = defineNJogadores();
-
+            escolha = funcoes.defineNJogadores();
+            
+            // escolha Player 1 x Machine
             if (escolha == 1) {
-                System.out.println("PLAYER 1");
-                int armaUser1 = escolheArmaUser();
-                int armaComputer = escolheArmaComputer();
+                Player p1 = new Player();
+                System.out.print("Qual é seu nome Player 1: ");
+                p1.setNome(input.next());
 
-                calculaVencedor(armaUser1, armaComputer);
+                int armaUser1 = p1.escolheArma();
+                int armaComputer = funcoes.escolheArmaComputer();
 
+                p1.vamosBatalhar(armaUser1, armaComputer);
+
+            // escolha Player 1 x Player 2    
             } else {
-                System.out.println("PLAYER 1");
-                int armaUser1 = escolheArmaUser();
-                System.out.println("PLAYER 2");
-                int armaUser2 = escolheArmaUser();
-
-                calculaVencedor(armaUser1, armaUser2);
+                Player p1 = new Player();
+                System.out.print("Qual é seu nome Player 1: ");
+                p1.setNome(input.next());
+                int armaUser1 = p1.escolheArma();
+                Player p2 = new Player();
+                System.out.print("Qual é seu nome Player 2: ");                
+                p2.setNome(input.next());
+                int armaUser2 = p2.escolheArma();
+                                              
+                p1.vamosBatalhar(armaUser1, armaUser2);
 
             }
 
@@ -51,63 +52,5 @@ public class Main {
         } while (resposta.equalsIgnoreCase("S"));
 
     }
-    
-    public static int defineNJogadores() {
-        int escolha;
-        do {
-            System.out.print("Quantos querem jogar?\n 1 ou 2 >> ");
-            escolha = input.nextInt();
-            if (escolha != 2 && escolha != 1) {
-                System.out.println("Este jogo só pode ser jogado com 1 ou 2 pessoas. Tente Novamente!/n");
-            }
-        } while (escolha != 2 && escolha != 1);
-        return escolha;
-    }
-    
-     
 
-    public static int escolheArmaUser() {
-        int armaUser;
-        do {
-            System.out.println("Escolha sua arma!\n"
-                    + "1 - Pedra\n"
-                    + "2 - Papel\n"
-                    + "3 - Tesoura");
-            System.out.print("Sua arma será → ");
-            armaUser = input.nextInt();                        
-
-            if (armaUser > 3 || armaUser < 1) {
-                System.out.println("Essa arma não existe neste mundo... Tente Novamente!");
-            }
-
-        } while (armaUser > 3 || armaUser < 1);
-        return armaUser;
-    }
-    
-    public static int escolheArmaComputer() {
-        System.out.print("Boa Escolha! Eu vou de → ");
-        Random rand = new Random();
-        int armaComputer = rand.nextInt(3) + 1;
-        System.out.println(armaComputer);
-        return armaComputer;
-    }
-    
-    public static void calculaVencedor(int arma1, int arma2) {
-        switch (arma1) {
-            case 1:
-                Pedra pedra = new Pedra();
-                JOptionPane.showMessageDialog(null, pedra.usaPedra(arma2));
-                break;
-
-            case 2:
-                Papel papel = new Papel();
-                 JOptionPane.showMessageDialog(null,papel.usaPapel(arma2));
-                break;
-
-            case 3:
-                Tesoura tesoura = new Tesoura();
-                 JOptionPane.showMessageDialog(null,tesoura.usaTesoura(arma2));
-                break;
-        }
-    }
 }

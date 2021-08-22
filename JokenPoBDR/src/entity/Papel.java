@@ -12,17 +12,15 @@ package entity;
 public class Papel {
     
     
-      public String usaPapel(int arma) {
-          String str = null;
+      public void usaPapel(int arma, String nome) {         
         switch (arma) {            
             case 1 ->
-                str = ("Player 1 Ganhou!\n Papel envolve Pedra!");
+               System.out.println(nome.toUpperCase() + "ganhou!\n Papel envolve Pedra!");
             case 2 ->
-                str = ("Deu empate!! \nDois papeis se encontram no meio do caminho!");
+                System.out.println ("Empatou!! \nDois papeis se encontram no meio do caminho!");
             case 3 ->
-                str = ("Player 1 Perdeu!! \nPapel é cortado por Tesoura!");
+                System.out.println (nome.toUpperCase() + "perdeu!! \nPapel é cortado por Tesoura!");
         }
-        return str;
 
     }
     

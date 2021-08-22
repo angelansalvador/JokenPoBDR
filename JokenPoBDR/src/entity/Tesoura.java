@@ -11,17 +11,16 @@ package entity;
  */
 public class Tesoura {
     
-          public String usaTesoura(int arma) {
-  String str = null;
+    public void usaTesoura(int arma, String nome) {
+ 
         switch (arma) {            
             case 1 ->
-                str = ("Player 1 perdeu!\n Tesoura é quebrada por pedra!");
+                System.out.println(nome.toUpperCase() + "perdeu!\n Tesoura é quebrada por pedra!");
             case 2 ->
-                str = ("Player 1 ganhou!! \nTesoura corta papel");
+               System.out.println(nome.toUpperCase() + "ganhou!! \nTesoura corta papel");
             case 3 ->
-                str = ("Deu empate!! \nVamos tesourar por aí?");
-        }
-        return str;
+               System.out.println("Empatou!! \nVamos tesourar por aí?");
+        }    
 
     }
     
